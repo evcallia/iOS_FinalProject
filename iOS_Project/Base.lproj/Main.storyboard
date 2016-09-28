@@ -26,17 +26,27 @@
                                         <state key="normal" title="3 Miles">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="threeMilesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zAa-3G-kV2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="di9-Lg-u6u">
                                         <state key="normal" title="5 Miles"/>
+                                        <connections>
+                                            <action selector="fiveMilesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GOp-wm-QUv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArL-hy-G4i">
                                         <state key="normal" title="10 Miles"/>
+                                        <connections>
+                                            <action selector="tenMilesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oh8-pj-qmh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnz-bt-aum">
                                         <state key="normal" title="Set Radius"/>
                                         <connections>
-                                            <segue destination="4y1-PT-4cM" kind="presentation" identifier="SetRadius" id="crc-71-gal"/>
+                                            <action selector="setRadiusPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Nr-cA-B1p"/>
+                                            <segue destination="dJx-iV-Krs" kind="presentation" identifier="SetRadius" id="crc-71-gal"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -58,7 +68,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Others Near You" id="d0Z-CJ-upd">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="OqW-wm-5Tc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="OqW-wm-5Tc">
+                            <connections>
+                                <action selector="signOutPressed:" destination="BYZ-38-t0r" id="e4V-wu-6QC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Location" id="agQ-mL-kyW">
                             <connections>
                                 <segue destination="6Cd-vt-hVA" kind="show" id="mHF-hh-sYB"/>
@@ -73,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="1055.2" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--Radius View Controller-->
         <scene sceneID="Ltf-qn-467">
             <objects>
-                <viewController id="4y1-PT-4cM" sceneMemberID="viewController">
+                <viewController id="4y1-PT-4cM" customClass="RadiusViewController" customModule="iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fcm-sg-nT5"/>
                         <viewControllerLayoutGuide type="bottom" id="VY3-rr-ecS"/>
@@ -86,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2i-aS-ey0"/>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a distance from you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp1-LT-OcA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a distance from you (miles)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp1-LT-OcA">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,10 +114,25 @@
                             <constraint firstItem="mp1-LT-OcA" firstAttribute="centerX" secondItem="3sO-qo-Jy1" secondAttribute="centerX" id="rF6-HY-RzF"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1LW-Ui-f7c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lwG-8Y-VSA">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="4y1-PT-4cM" id="mQX-wL-mbe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oCj-H2-jDI">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="4y1-PT-4cM" id="IKF-3g-r04"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pickerView" destination="X2i-aS-ey0" id="yUV-q0-oSH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcH-bw-DsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="918"/>
+            <point key="canvasLocation" x="1992.8" y="917.99100449775119"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="Smg-qm-WOW">
@@ -136,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="1937" y="123"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Partner View Controller-->
         <scene sceneID="hXP-Kf-J8y">
             <objects>
-                <viewController id="jHt-Ae-Qjh" sceneMemberID="viewController">
+                <viewController id="jHt-Ae-Qjh" customClass="SelectPartnerViewController" customModule="iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h8u-7p-aBR"/>
                         <viewControllerLayoutGuide type="bottom" id="UBJ-Kh-XH6"/>
@@ -171,22 +200,57 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjq-bF-cAI">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-YH-SQr">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCn-e3-kfM">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fo-dK-Hh5">
+                                <frame key="frameInset" minX="166" minY="86" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="RgL-07-VTR" secondAttribute="leading" id="3L9-tX-jaT"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qrb-HA-kYz" secondAttribute="leading" id="6OH-sU-KNN"/>
+                            <constraint firstItem="Wol-YH-SQr" firstAttribute="top" secondItem="tjq-bF-cAI" secondAttribute="bottom" constant="51" id="9zA-p3-NeC"/>
+                            <constraint firstItem="lCn-e3-kfM" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="FLh-DT-PII"/>
                             <constraint firstItem="Uem-RU-6Gc" firstAttribute="top" secondItem="qrb-HA-kYz" secondAttribute="bottom" constant="53" id="FPB-jY-P5M"/>
                             <constraint firstItem="ecn-gT-eZ9" firstAttribute="leading" secondItem="0e7-Hy-gI0" secondAttribute="leadingMargin" constant="25" id="GLq-yA-GXS"/>
                             <constraint firstItem="RgL-07-VTR" firstAttribute="top" secondItem="Ltu-WQ-ADJ" secondAttribute="bottom" constant="57" id="HX7-Wq-9zm"/>
+                            <constraint firstItem="2fo-dK-Hh5" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="I8v-Gd-M9E"/>
+                            <constraint firstItem="lCn-e3-kfM" firstAttribute="top" secondItem="Wol-YH-SQr" secondAttribute="bottom" constant="52" id="MzL-QI-pDF"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Uem-RU-6Gc" secondAttribute="leading" id="QRo-7Q-PmD"/>
                             <constraint firstItem="qrb-HA-kYz" firstAttribute="top" secondItem="RgL-07-VTR" secondAttribute="bottom" constant="52" id="V5a-dd-Mlf"/>
+                            <constraint firstItem="tjq-bF-cAI" firstAttribute="top" secondItem="2fo-dK-Hh5" secondAttribute="bottom" constant="56" id="bzf-zh-z4e"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ecn-gT-eZ9" secondAttribute="trailing" constant="25" id="dBg-MR-jr7"/>
+                            <constraint firstItem="Wol-YH-SQr" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="e9d-9X-eNM"/>
+                            <constraint firstItem="tjq-bF-cAI" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="jhJ-HL-NnZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Ltu-WQ-ADJ" secondAttribute="leading" id="kdM-tF-n5u"/>
                             <constraint firstItem="UBJ-Kh-XH6" firstAttribute="top" secondItem="ecn-gT-eZ9" secondAttribute="bottom" constant="20" id="lhT-J1-kMh"/>
                             <constraint firstItem="Ltu-WQ-ADJ" firstAttribute="top" secondItem="h8u-7p-aBR" secondAttribute="bottom" constant="23" id="mcS-5Y-bcP"/>
+                            <constraint firstItem="2fo-dK-Hh5" firstAttribute="top" secondItem="h8u-7p-aBR" secondAttribute="bottom" constant="23" id="p0Z-ZB-3sv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="e9d-9X-eNM" id="8u1-pi-wDd"/>
+                        <outlet property="nameLabel" destination="2fo-dK-Hh5" id="9XD-yV-VKR"/>
+                        <outlet property="phoneLabel" destination="tjq-bF-cAI" id="eLg-Fh-S3w"/>
+                        <outlet property="restaurantLabel" destination="lCn-e3-kfM" id="96A-6i-kvR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSN-fr-GR8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,6 +273,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9F-db-Se5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="116" y="122.78860569715144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fDs-Ht-DUs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJx-iV-Krs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hYa-Lx-dN2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4y1-PT-4cM" kind="relationship" relationship="rootViewController" id="RAK-ap-Hq5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1VT-OM-X6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1053.5999999999999" y="917.99100449775119"/>
         </scene>
     </scenes>
 </document>

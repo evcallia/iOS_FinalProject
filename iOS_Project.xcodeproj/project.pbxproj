@@ -15,7 +15,13 @@
 		923698871D9B204200668B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923698851D9B204200668B47 /* LaunchScreen.storyboard */; };
 		923698921D9B204200668B47 /* iOS_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923698911D9B204200668B47 /* iOS_ProjectTests.swift */; };
 		9236989D1D9B204200668B47 /* iOS_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9236989C1D9B204200668B47 /* iOS_ProjectUITests.swift */; };
-		92EC00991D9C27D000D902A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC00981D9C27D000D902A7 /* User.swift */; };
+		BA34FBC01D9C710C00D23DA2 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */; };
+		BA34FBC21D9C719F00D23DA2 /* RadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */; };
+		BA34FBC41D9C71F900D23DA2 /* RadiusDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC31D9C71F900D23DA2 /* RadiusDelegate.swift */; };
+		BA34FBC61D9C7DB200D23DA2 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC51D9C7DB200D23DA2 /* UserAnnotation.swift */; };
+		BA34FBC81D9C83A200D23DA2 /* SelectPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC71D9C83A200D23DA2 /* SelectPartnerViewController.swift */; };
+		BA34FBCA1D9C83CD00D23DA2 /* SelectPartnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC91D9C83CD00D23DA2 /* SelectPartnerDelegate.swift */; };
+		BA64E7221D9C2D9700F090A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64E7211D9C2D9700F090A8 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +56,13 @@
 		923698981D9B204200668B47 /* iOS_ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS_ProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9236989C1D9B204200668B47 /* iOS_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_ProjectUITests.swift; sourceTree = "<group>"; };
 		9236989E1D9B204200668B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92EC00981D9C27D000D902A7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../AdvancediOS/iOS_Project/iOS_Project/User.swift; sourceTree = "<group>"; };
+		BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
+		BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewController.swift; sourceTree = "<group>"; };
+		BA34FBC31D9C71F900D23DA2 /* RadiusDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusDelegate.swift; sourceTree = "<group>"; };
+		BA34FBC51D9C7DB200D23DA2 /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
+		BA34FBC71D9C83A200D23DA2 /* SelectPartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPartnerViewController.swift; sourceTree = "<group>"; };
+		BA34FBC91D9C83CD00D23DA2 /* SelectPartnerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPartnerDelegate.swift; sourceTree = "<group>"; };
+		BA64E7211D9C2D9700F090A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +113,16 @@
 		923698781D9B204200668B47 /* iOS_Project */ = {
 			isa = PBXGroup;
 			children = (
+				9236987D1D9B204200668B47 /* Main.storyboard */,
 				923698791D9B204200668B47 /* AppDelegate.swift */,
 				9236987B1D9B204200668B47 /* SearchMapViewController.swift */,
-				9236987D1D9B204200668B47 /* Main.storyboard */,
-				92EC00981D9C27D000D902A7 /* User.swift */,
+				BA34FBC31D9C71F900D23DA2 /* RadiusDelegate.swift */,
+				BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */,
+				BA34FBC71D9C83A200D23DA2 /* SelectPartnerViewController.swift */,
+				BA34FBC91D9C83CD00D23DA2 /* SelectPartnerDelegate.swift */,
+				BA64E7211D9C2D9700F090A8 /* User.swift */,
+				BA34FBC51D9C7DB200D23DA2 /* UserAnnotation.swift */,
+				BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */,
 				923698831D9B204200668B47 /* Assets.xcassets */,
 				923698851D9B204200668B47 /* LaunchScreen.storyboard */,
 				923698881D9B204200668B47 /* Info.plist */,
@@ -265,10 +283,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92EC00991D9C27D000D902A7 /* User.swift in Sources */,
+				BA64E7221D9C2D9700F090A8 /* User.swift in Sources */,
+				BA34FBC61D9C7DB200D23DA2 /* UserAnnotation.swift in Sources */,
+				BA34FBC81D9C83A200D23DA2 /* SelectPartnerViewController.swift in Sources */,
 				9236987C1D9B204200668B47 /* SearchMapViewController.swift in Sources */,
 				923698821D9B204200668B47 /* iOS_Project.xcdatamodeld in Sources */,
 				9236987A1D9B204200668B47 /* AppDelegate.swift in Sources */,
+				BA34FBC21D9C719F00D23DA2 /* RadiusViewController.swift in Sources */,
+				BA34FBCA1D9C83CD00D23DA2 /* SelectPartnerDelegate.swift in Sources */,
+				BA34FBC41D9C71F900D23DA2 /* RadiusDelegate.swift in Sources */,
+				BA34FBC01D9C710C00D23DA2 /* CancelButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
