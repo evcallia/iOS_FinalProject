@@ -18,6 +18,8 @@
 		9236989D1D9B204200668B47 /* iOS_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9236989C1D9B204200668B47 /* iOS_ProjectUITests.swift */; };
 		92B46EF31D9D6CA3004B5B4D /* PartnerPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B46EF21D9D6CA3004B5B4D /* PartnerPin.swift */; };
 		92B46EF51D9D793B004B5B4D /* RequestMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B46EF41D9D793B004B5B4D /* RequestMeetingViewController.swift */; };
+		92DAE21D1D9DB9B100C00BA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAE21C1D9DB9B100C00BA8 /* LoginViewController.swift */; };
+		92DAE21F1D9DB9BB00C00BA8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAE21E1D9DB9BB00C00BA8 /* RegisterViewController.swift */; };
 		BA34FBC01D9C710C00D23DA2 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */; };
 		BA34FBC21D9C719F00D23DA2 /* RadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */; };
 		BA34FBC41D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC31D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift */; };
@@ -61,6 +63,8 @@
 		9236989E1D9B204200668B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92B46EF21D9D6CA3004B5B4D /* PartnerPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerPin.swift; sourceTree = "<group>"; };
 		92B46EF41D9D793B004B5B4D /* RequestMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMeetingViewController.swift; sourceTree = "<group>"; };
+		92DAE21C1D9DB9B100C00BA8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		92DAE21E1D9DB9BB00C00BA8 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
 		BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewController.swift; sourceTree = "<group>"; };
 		BA34FBC31D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				9236987D1D9B204200668B47 /* Main.storyboard */,
+				92DAE21C1D9DB9B100C00BA8 /* LoginViewController.swift */,
+				92DAE21E1D9DB9BB00C00BA8 /* RegisterViewController.swift */,
 				92B46EF41D9D793B004B5B4D /* RequestMeetingViewController.swift */,
 				92B46EF21D9D6CA3004B5B4D /* PartnerPin.swift */,
 				923698791D9B204200668B47 /* AppDelegate.swift */,
@@ -298,8 +304,10 @@
 				9236987A1D9B204200668B47 /* AppDelegate.swift in Sources */,
 				BA34FBC21D9C719F00D23DA2 /* RadiusViewController.swift in Sources */,
 				BA34FBC41D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift in Sources */,
+				92DAE21F1D9DB9BB00C00BA8 /* RegisterViewController.swift in Sources */,
 				BA34FBC01D9C710C00D23DA2 /* CancelButtonDelegate.swift in Sources */,
 				92B46EF51D9D793B004B5B4D /* RequestMeetingViewController.swift in Sources */,
+				92DAE21D1D9DB9B100C00BA8 /* LoginViewController.swift in Sources */,
 				920698591D9CA9E000B2141A /* SearchRestaurantsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

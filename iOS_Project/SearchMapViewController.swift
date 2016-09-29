@@ -18,6 +18,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet var lowerButtons: [UIButton]!
     @IBOutlet weak var selectUserButton: UIBarButtonItem!
     var users = [User]()
+    var currentUser: User?
     var usersWithin = [User]()
     let locationManager = CLLocationManager()
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
