@@ -34,7 +34,7 @@ class RequestMeetingViewController: UIViewController, MFMessageComposeViewContro
     
     func populateInfo(){
         nameLabel.text = partner?.name
-        phoneLabel.text = partner?.phoneNumber
+        phoneLabel.text = String(describing: partner!.phoneNumber)
         emailLabel.text = partner?.email
         restaurantLabel.text = ((restaurant!.annotation?.title)!)!
     }
@@ -51,14 +51,14 @@ class RequestMeetingViewController: UIViewController, MFMessageComposeViewContro
         if MFMessageComposeViewController.canSendText(){
             let controller = MFMessageComposeViewController()
             controller.body = "Hi \(partner?.name), I saw you were in the area. Do you want to meet for \(((restaurant!.annotation?.title)!)!).      Message sent using Dinn.r"
-            controller.recipients = [(partner?.phoneNumber)!]
+            controller.recipients = [String(describing: partner?.phoneNumber)]
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
         }
     }
     
     @IBAction func callButtonPressed(_ sender: UIButton) {
-        if let phoneCallURL = NSURL(string: (partner?.phoneNumber)!){
+        if let phoneCallURL = NSURL(string: String(describing: partner!.phoneNumber)){
             let application = UIApplication.shared
             if application.canOpenURL(phoneCallURL as URL){
                 application.open(phoneCallURL as URL, options: [:], completionHandler: nil)

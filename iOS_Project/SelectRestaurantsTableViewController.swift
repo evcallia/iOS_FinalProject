@@ -24,7 +24,7 @@ class SelectRestaurantsTableViewController: UITableViewController, CLLocationMan
     weak var cancelButtonDelegate: CancelButtonDelegate?
     var radius: Double?
     let locationManager = CLLocationManager()
-    var siblingDelegate: SearchRestaurantsViewController?
+    weak var siblingDelegate: SearchRestaurantsViewController?
     var places = [MKMapItem]()
     var previousSearch = ""
 //*********

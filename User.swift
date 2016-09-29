@@ -13,10 +13,10 @@ class User {
     var longitude: Double
     var latitude: Double
     var name: String
-    var phoneNumber: String
+    var phoneNumber: Int
     var email: String
     
-    init(id: String, name: String, email: String, phoneNumber: String, longitude: Double, latitude: Double){
+    init(id: String, name: String, email: String, phoneNumber: Int, longitude: Double, latitude: Double){
         self.id = id
         self.name = name
         self.email = email
@@ -36,7 +36,7 @@ class User {
                 if let resultsArray = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
                     for results in resultsArray {
                         if let user = results as? NSDictionary {
-                            users.append(User(id: user["id"] as! String, name: user["name"]! as! String, email: user["email"]! as! String, phoneNumber: user["phoneNumber"]! as! String, longitude: Double(user["longitude"]! as! String)!, latitude: Double(user["latitude"]! as! String)!))
+                            users.append(User(id: user["id"] as! String, name: user["name"]! as! String, email: user["email"]! as! String, phoneNumber: user["phoneNumber"]! as! Int, longitude: user["longitude"]! as! Double , latitude: user["latitude"]! as! Double))
                         }
                     }
                     completionHandler(users)
@@ -62,9 +62,9 @@ class User {
                     newUser = User(id: resultDictionary["id"] as! String,
                                    name: resultDictionary["name"]! as! String,
                                    email: resultDictionary["email"]! as! String,
-                                   phoneNumber: resultDictionary["phoneNumber"]! as! String,
-                                   longitude: Double(resultDictionary["longitude"]! as! String)!,
-                                   latitude: Double(resultDictionary["latitude"]! as! String)!)
+                                   phoneNumber: resultDictionary["phoneNumber"]! as! Int,
+                                   longitude: resultDictionary["longitude"]! as! Double,
+                                   latitude: resultDictionary["latitude"]! as! Double)
                     completionHandler(newUser!)
                 }
             } catch {
@@ -82,6 +82,28 @@ class User {
         let put = "latitude=\(user.latitude)&longitude=\(user.longitude)"
         request.httpBody = put.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
+        task.resume()
+    }
+    
+    static func login(email: String, password: String) {
+        var users = [User]()
+        let url = NSURL(string: "http://localhost:3000/people/0")
+        let session = URLSession.shared
+        let task = session.dataTask(with: url as! URL, completionHandler: {
+            data, response, error in
+            do {
+                if let resultsArray = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                    for results in resultsArray {
+                        if let user = results as? NSDictionary {
+                            
+                        }
+                    }
+                    completionHandler(users)
+                }
+            } catch {
+                print("There was an \(error)")
+            }
+        })
         task.resume()
     }
 }

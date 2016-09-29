@@ -4,57 +4,81 @@
       "id": "0",
       "name": "Evan",
       "email": "evan@gmail.com",
-      "phoneNumber": "1111111111",
-      "longitude": "-122.307508",
-      "latitude": "47.664504"
+      "phoneNumber": 1111111111,
+      "longitude": -122.307508,
+      "latitude": 47.664504
     },
     {
       "id": "1",
       "name": "Joe",
       "email": "joe@gmail.com",
-      "phoneNumber": "1111111112",
-      "longitude": "-122.204189",
-      "latitude": "47.612687"
+      "phoneNumber": 1111111112,
+      "longitude": -122.204189,
+      "latitude": 47.612687
     },
     {
       "id": "2",
       "name": "Jeff",
       "email": "jeff@gmail.com",
-      "phoneNumber": "1111111113",
-      "longitude": "-122.205766",
-      "latitude": "47.598708"
+      "phoneNumber": 1111111113,
+      "longitude": -122.205766,
+      "latitude": 47.598708
     },
     {
       "id": "3",
       "name": "Tom",
       "email": "tom@gmail.com",
-      "phoneNumber": "1111111114",
-      "longitude": "-122.177399",
-      "latitude": "47.596740"
-    },
-    {
-      "name": "jack",
-      "email": "jack@uw.edu",
-      "phoneNumber": 16262878320,
-      "longitude": -122.307508,
-      "latitude": 47.664504,
-      "id": "3dbcfd27-96e2-4b21-af72-81b60f857fb1"
-    },
-    {
-      "name": "jack",
-      "email": "j@uw",
-      "phoneNumber": 5123412341,
-      "longitude": -122.307508,
-      "latitude": 47.664504,
-      "id": "609d86de-1a28-4114-a581-cf5a8f4be17a"
+      "phoneNumber": 1111111114,
+      "longitude": -122.177399,
+      "latitude": 47.59674
     },
     {
       "name": "asdf",
-      "email": "asdfs@",
-      "phoneNumber": 1234123412,
+      "email": "asdf",
+      "phoneNumber": 23423,
       "longitude": -122.307508,
       "latitude": 47.664504,
-      "id": "8d587ea4-7c0c-498d-a6e2-02e8aa0ae6d1"
+      "id": "fa6d5e2d-deb9-4474-8c7e-d4e9a57c0f78"
+    },
+    {
+      "name": "asdf",
+      "email": "asdf",
+      "phoneNumber": 345,
+      "longitude": -122.307508,
+      "latitude": 47.664504,
+      "id": "2d477046-3b33-42ed-82d3-d8fd0cbcc8e3"
+    },
+    {
+      "name": "asdf",
+      "email": "asdf",
+      "phoneNumber": 345,
+      "longitude": -122.307508,
+      "latitude": 47.664504,
+      "id": "69383ea7-0fb6-4087-94ba-94f9fd8a1bea"
+    },
+    {
+      "name": "asdf",
+      "email": "asdf",
+      "phoneNumber": 1234,
+      "longitude": -122.307508,
+      "latitude": 47.664504,
+      "id": "e222b930-09db-4546-a734-b1e581d8186e"
+    },
+    {
+      "name": "asdf",
+      "email": "asdf",
+      "phoneNumber": 234,
+      "longitude": -122.307508,
+      "latitude": 47.664504,
+      "id": "250e1641-3e2d-402a-badb-10fcf97b5ab9"
+    },
+    {
+      "name": "asdf",
+      "email": "asdf",
+      "phoneNumber": 234,
+      "longitude": -122.307508,
+      "latitude": 47.664504,
+      "id": "fa6503b4-f317-470f-b23b-8f4e3c51c7a6"
     }
   ]
 }

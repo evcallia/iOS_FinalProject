@@ -17,6 +17,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet weak var map: MKMapView!
     @IBOutlet var lowerButtons: [UIButton]!
     @IBOutlet weak var selectUserButton: UIBarButtonItem!
+    
     var users = [User]()
     var currentUser: User?
     var usersWithin = [User]()
@@ -83,7 +84,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func placePins(users: [User], radius: Double){
         map.removeAnnotations(map.annotations)
         for user in users{
-            let annotation = UserAnnotation(title: user.name, coordinate: CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude), info: user.phoneNumber, user: user, radius: radius, pinColor: .blue)
+            let annotation = UserAnnotation(title: user.name, coordinate: CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude), info: String(user.phoneNumber), user: user, radius: radius, pinColor: .blue)
             map.addAnnotation(annotation)
         }
     }
@@ -241,6 +242,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
 //**********
     
+
 }
 
 

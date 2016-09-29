@@ -37,7 +37,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSk-q9-3i0">
                                 <state key="normal" title="Register"/>
                                 <connections>
-                                    <segue destination="r4f-rM-ShD" kind="presentation" id="4pg-r2-QJH"/>
+                                    <segue destination="r4f-rM-ShD" kind="presentation" identifier="Register" id="4pg-r2-QJH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4i-a7-60B">
@@ -82,12 +82,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="Login" id="EaX-Gx-KkF"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="Login" id="hCF-ij-tgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHN-eS-t6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631.20000000000005" y="21.139430284857571"/>
+            <point key="canvasLocation" x="918" y="123"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="mte-PR-oej">
@@ -208,12 +208,11 @@
                         <outlet property="passwordTextField" destination="Mlb-pB-4O0" id="Gfy-TD-Vxn"/>
                         <outlet property="phoneNumberTextField" destination="hro-Fl-uhk" id="c9W-04-BXR"/>
                         <outlet property="rePasswordTextField" destination="fmG-N6-NwP" id="xeZ-DS-6fs"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="Register" id="hzO-vn-eUe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhu-1Y-m5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629.60000000000002" y="732.68365817091455"/>
+            <point key="canvasLocation" x="918" y="1546"/>
         </scene>
         <!--Others Near You-->
         <scene sceneID="tne-QT-ifu">
@@ -276,6 +275,7 @@
                                             </button>
                                             <connections>
                                                 <action selector="signOutPressed:" destination="BYZ-38-t0r" id="bpj-7d-NRl"/>
+                                                <segue destination="ogS-ra-hYP" kind="show" identifier="SignOut" id="pNP-04-r2J"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="Vcy-Wr-sYZ">
@@ -369,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcH-bw-DsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="917.99100449775119"/>
+            <point key="canvasLocation" x="2876" y="918"/>
         </scene>
         <!--Search for a Restaurant-->
         <scene sceneID="Smg-qm-WOW">
@@ -409,7 +409,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMF-GK-5uj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4708" y="501.49925037481262"/>
+            <point key="canvasLocation" x="4689" y="576"/>
         </scene>
         <!--Search for a Restaurant-->
         <scene sceneID="pTi-Qb-LhK">
@@ -464,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxB-pB-12c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3768.8000000000002" y="-216.34182908545728"/>
+            <point key="canvasLocation" x="4689" y="-122"/>
         </scene>
         <!--Request Meeting View Controller-->
         <scene sceneID="hXP-Kf-J8y">
@@ -570,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSN-fr-GR8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5684" y="122.78860569715144"/>
+            <point key="canvasLocation" x="5868" y="229"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fDs-Ht-DUs">
@@ -588,7 +588,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VT-OM-X6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="917.99100449775119"/>
+            <point key="canvasLocation" x="1994" y="918"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="KMj-7w-ytI">
@@ -626,7 +626,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzo-Y5-6jf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2829.5999999999999" y="-216.34182908545728"/>
+            <point key="canvasLocation" x="3828" y="-121"/>
         </scene>
         <!--List View-->
         <scene sceneID="kWi-ev-Qlt">
@@ -645,7 +645,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7li-Ky-2Xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3768.8000000000002" y="501.49925037481262"/>
+            <point key="canvasLocation" x="3828" y="549"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tXM-qf-56Q">
@@ -663,11 +663,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8A-q0-kzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-340" y="779"/>
+            <point key="canvasLocation" x="918" y="851"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hzO-vn-eUe"/>
         <segue reference="YVm-O1-xHX"/>
     </inferredMetricsTieBreakers>
 </document>

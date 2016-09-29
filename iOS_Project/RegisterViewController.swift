@@ -15,6 +15,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var rePasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
+    
+    weak var delegate: RegisterViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +34,8 @@ class RegisterViewController: UIViewController {
         
         User.addUser(user: user, completionHandler: {
             user in
-            self.performSegue(withIdentifier: "Register", sender: user)
+            self.delegate?.user = user
+            self.delegate?.registerViewController(self, didCreate: user)
         })
     }
 
