@@ -11,46 +11,41 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, CancelButtonDelegate, RadiusDelegate, SelectPartnerDelegate {
+class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, CancelButtonDelegate, RadiusViewControllerDelegate {
 
 // MARK: - Class variables
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet var lowerButtons: [UIButton]!
+    @IBOutlet weak var selectUserButton: UIBarButtonItem!
     var users = [User]()
     var usersWithin = [User]()
     let locationManager = CLLocationManager()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 //**********
     
     
-// MARK: - Start up functions
+// MARK: - Page load
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setting up map and getting location (EVAN)
-//        map.delegate = self
-//        self.map.showsUserLocation = true
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.startUpdatingLocation()
-//        let myLocation = self.locationManager.location
-//        let location = CLLocationCoordinate2D(latitude: (myLocation?.coordinate.latitude)!, longitude: (myLocation?.coordinate.longitude)!)
-//        let span = MKCoordinateSpanMake(0.5, 0.5)
-//        let region = MKCoordinateRegion(center: location, span: span)
-//        map.setRegion(region, animated: true)
+        selectUserButton.isEnabled = false
         
-        // Setting up map and getting location (JEFF)
+        // Setting up map and getting location
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.map.showsUserLocation = true
-        
+        self.map.delegate = self
+       
         //get other user location
         getAllUsers()
-       
     }
 //**********
     
     
+// Mark: - Custom functions
+    //grabs all users from database
     func getAllUsers(){
         User.getAllUsers(completionHandler: {
             users in
@@ -61,6 +56,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         })
     }
     
+    // filters users within search radius
     func getUsersInRadius(distance: Double){
         usersWithin = [User]()
         for user in users{
@@ -72,24 +68,58 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
             }
         }
         showCircle(coordinate: (self.locationManager.location?.coordinate)!, radius: distance)
-        placePins(users: usersWithin)
+        placePins(users: usersWithin, radius: distance)
     }
     
-    func placePins(users: [User]){
+    // Adds search radius overlay to map
+    func showCircle(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance){
+        let circle = MKCircle(center: coordinate, radius: (radius * 1609.344) as CLLocationDistance)
+        map.removeOverlays(map.overlays)
+        map.add(circle)
+    }
+    
+    // Places custom pins on map where filtered users are
+    func placePins(users: [User], radius: Double){
         map.removeAnnotations(map.annotations)
         for user in users{
-//            let annotation = MKPointAnnotation()
-//            let coordinate = CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude)
-//            annotation.coordinate = coordinate
-//            annotation.title = user.name
-//            annotation.subtitle = user.phoneNumber
-//            map.addAnnotation(annotation)
-            
-            let annotation = UserAnnotation(title: user.name, coordinate: CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude), info: user.phoneNumber)
+            let annotation = UserAnnotation(title: user.name, coordinate: CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude), info: user.phoneNumber, user: user, radius: radius)
             map.addAnnotation(annotation)
         }
     }
     
+    
+// MARK: - Map Functions
+    //Select pin on the map
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        selectUserButton.isEnabled = true
+    }
+    
+    // Deselect pin on map
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        selectUserButton.isEnabled = false
+    }
+    
+    //function that consistantly maintaines users location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta:0.25, longitudeDelta:0.25))
+        self.map.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+        
+    }
+    
+    // Creates redius circle to overlay on map
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circle = MKCircleRenderer(overlay: overlay)
+        circle.fillColor = UIColor.red
+        circle.alpha = 0.1
+        circle.lineWidth = 2
+        circle.strokeColor = UIColor.red
+        return circle
+    }
+    
+    // Adds custom tooltip vew for user pins
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "UserAnnotation"
         if annotation is UserAnnotation {
@@ -109,54 +139,16 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         return nil
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        print("here")
-//        if annotation is MKUserLocation {
-//            return nil
-//        }
-//        
-//        let reuseID = "pin"
-//        
-//        return nil
-//    }
-    
+    // User has selected a person to meet with. Perform segue to next view
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let user = view.annotation as! UserAnnotation
-        let name = user.title
-        let phoneNumber = user.info
-        
-        let ac = UIAlertController(title: name, message: phoneNumber, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
-    
-    func showCircle(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance){
-        let circle = MKCircle(center: coordinate, radius: (radius * 1609.344) as CLLocationDistance)
-        map.add(circle)
-    }
-    
-// MARK: - Map Functions
-    //Select Person on the map
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        //save person in class variable
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta:0.25, longitudeDelta:0.25))
-        self.map.setRegion(region, animated: true)
-        self.locationManager.stopUpdatingLocation()
-        
-    }
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let circle = MKCircleRenderer(overlay: overlay)
-        circle.fillColor = UIColor.red
-        circle.alpha = 0.1
-        circle.lineWidth = 1
-        circle.strokeColor = UIColor.red
-        return circle
+        let annotation = view.annotation as! UserAnnotation
+        performSegue(withIdentifier: "SelectPartner", sender: annotation)
+//        let name = annotation.title
+//        let phoneNumber = annotation.info
+//        
+//        let ac = UIAlertController(title: name, message: phoneNumber, preferredStyle: .alert)
+//        ac.addAction(UIAlertAction(title: "OK", style: .default))
+//        present(ac, animated: true)
     }
 //*********
     
@@ -166,20 +158,47 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
 
     }
     
+    @IBAction func selectUserPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "SelectPartner", sender: self)
+    }
+    
     @IBAction func threeMilesPressed(_ sender: UIButton) {
+        resetButtonColor()
+        sender.backgroundColor = UIColor.blue
+        sender.titleLabel?.textColor = UIColor.white
+        sender.tintColor = UIColor.white
         self.getUsersInRadius(distance: 3.0)
     }
     
     @IBAction func fiveMilesPressed(_ sender: UIButton) {
+        resetButtonColor()
+        sender.backgroundColor = UIColor.blue
+        sender.titleLabel?.textColor = UIColor.white
+        sender.tintColor = UIColor.white
         self.getUsersInRadius(distance: 5.0)
     }
     
     @IBAction func tenMilesPressed(_ sender: UIButton) {
+        resetButtonColor()
+        sender.backgroundColor = UIColor.blue
+        sender.titleLabel?.textColor = UIColor.white
+        sender.tintColor = UIColor.white
         self.getUsersInRadius(distance: 10.0)
     }
     
     @IBAction func setRadiusPressed(_ sender: UIButton) {
+        resetButtonColor()
+        sender.backgroundColor = UIColor.blue
+        sender.titleLabel?.textColor = UIColor.white
+        sender.tintColor = UIColor.white
         performSegue(withIdentifier: "SetRadius", sender: self)
+    }
+    
+    func resetButtonColor(){
+        for btn in lowerButtons{
+            btn.backgroundColor = UIColor.white
+            btn.titleLabel?.textColor = UIColor.blue
+        }
     }
 //**********
     
@@ -191,27 +210,39 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
             let controller = navigationController.topViewController as! RadiusViewController
             controller.cancel = self
             controller.delegate = self
+        }else if (segue.identifier == "SelectPartner") {
+            let tabController = segue.destination as? UITabBarController
+            let navController = tabController?.viewControllers?[0] as! UINavigationController
+            let controller = navController.topViewController as! SearchRestaurantsViewController
+            controller.cancelButtonDelegate = self
+            controller.partner = (sender as? UserAnnotation)?.user
+            controller.radius = (sender as? UserAnnotation)?.radius
+            
+            let navController2 = tabController?.viewControllers?[1] as! UINavigationController
+            let controller2 = navController2.topViewController as! SelectRestaurantsTableViewController
+                controller2.cancelButtonDelegate = self
+            controller2.partner = (sender as? UserAnnotation)?.user
+            controller2.radius = (sender as? UserAnnotation)?.radius
+            
+            controller.siblingDelegate = controller2
+            controller2.siblingDelegate = controller
         }
-        if segue.identifier == "SelectPartner" {
-            let controller = segue.destination as! SelectPartnerViewController
-            controller.delegate = self
-            // CHANGE SO YOU SELECT PARTNER FROM PIN
-//            controller.partner = user
-        }
-    }//**********
+    }
+//**********
     
-    func radiusDelegate(_ controller: RadiusViewController, didSet radius: Double) {
+// MARK: - RadiusControllerDelegate functions
+    func radius(controller: RadiusViewController, didSet radius: Double) {
         dismiss(animated: true, completion: nil)
         self.getUsersInRadius(distance: radius)
     }
+//*********
     
-    func selectPartnerDelegate(_ controller: SelectPartnerViewController, didSelect partner: User) {
-        
-    }
     
+// MARK: - CancelButtonDelegate functions
     func cancelButtonPressedFrom(_ controller: UIViewController) {
         dismiss(animated: true, completion: nil)
     }
+//**********
     
 }
 

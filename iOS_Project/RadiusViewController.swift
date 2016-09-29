@@ -16,7 +16,7 @@ class RadiusViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var halfNumber = ".0"
     var wholeNumber = "0"
     weak var cancel: CancelButtonDelegate?
-    weak var delegate: RadiusDelegate?
+    weak var delegate: RadiusViewControllerDelegate?
     var radius: Double?
 
 // VIEW DID LOAD
@@ -74,7 +74,7 @@ class RadiusViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         let radius = Double(wholeNumber + halfNumber)
-        delegate?.radiusDelegate(self, didSet: radius!)
+        delegate?.radius(controller: self, didSet: radius!)
     }
     
     

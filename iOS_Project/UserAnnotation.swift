@@ -14,11 +14,15 @@ class UserAnnotation: NSObject, MKAnnotation {
     var title: String?
     var coordinate: CLLocationCoordinate2D
     var info: String
+    var user: User
+    var radius: Double
     
-    init(title: String, coordinate: CLLocationCoordinate2D, info: String) {
+    init(title: String, coordinate: CLLocationCoordinate2D, info: String, user: User, radius: Double) {
         self.title = title
         self.coordinate = coordinate
         self.info = info
+        self.user = user
+        self.radius = radius
     }
     
 }

@@ -7,6 +7,6 @@
 //
 
 import Foundation
-protocol RadiusDelegate: class {
-    func radiusDelegate(_ controller: RadiusViewController, didSet radius: Double)
+protocol RadiusViewControllerDelegate: class {
+    func radius(controller: RadiusViewController, didSet radius: Double)
 }

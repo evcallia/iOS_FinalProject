@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920698591D9CA9E000B2141A /* SearchRestaurantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920698581D9CA9E000B2141A /* SearchRestaurantsViewController.swift */; };
 		9236987A1D9B204200668B47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923698791D9B204200668B47 /* AppDelegate.swift */; };
 		9236987C1D9B204200668B47 /* SearchMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9236987B1D9B204200668B47 /* SearchMapViewController.swift */; };
 		9236987F1D9B204200668B47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9236987D1D9B204200668B47 /* Main.storyboard */; };
@@ -17,10 +18,9 @@
 		9236989D1D9B204200668B47 /* iOS_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9236989C1D9B204200668B47 /* iOS_ProjectUITests.swift */; };
 		BA34FBC01D9C710C00D23DA2 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */; };
 		BA34FBC21D9C719F00D23DA2 /* RadiusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */; };
-		BA34FBC41D9C71F900D23DA2 /* RadiusDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC31D9C71F900D23DA2 /* RadiusDelegate.swift */; };
+		BA34FBC41D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC31D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift */; };
 		BA34FBC61D9C7DB200D23DA2 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC51D9C7DB200D23DA2 /* UserAnnotation.swift */; };
-		BA34FBC81D9C83A200D23DA2 /* SelectPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC71D9C83A200D23DA2 /* SelectPartnerViewController.swift */; };
-		BA34FBCA1D9C83CD00D23DA2 /* SelectPartnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC91D9C83CD00D23DA2 /* SelectPartnerDelegate.swift */; };
+		BA34FBC81D9C83A200D23DA2 /* SelectRestaurantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34FBC71D9C83A200D23DA2 /* SelectRestaurantsTableViewController.swift */; };
 		BA64E7221D9C2D9700F090A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA64E7211D9C2D9700F090A8 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		920698581D9CA9E000B2141A /* SearchRestaurantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRestaurantsViewController.swift; sourceTree = "<group>"; };
 		923698761D9B204200668B47 /* iOS_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		923698791D9B204200668B47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9236987B1D9B204200668B47 /* SearchMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapViewController.swift; sourceTree = "<group>"; };
@@ -58,10 +59,9 @@
 		9236989E1D9B204200668B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
 		BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewController.swift; sourceTree = "<group>"; };
-		BA34FBC31D9C71F900D23DA2 /* RadiusDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusDelegate.swift; sourceTree = "<group>"; };
+		BA34FBC31D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusViewControllerDelegate.swift; sourceTree = "<group>"; };
 		BA34FBC51D9C7DB200D23DA2 /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
-		BA34FBC71D9C83A200D23DA2 /* SelectPartnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPartnerViewController.swift; sourceTree = "<group>"; };
-		BA34FBC91D9C83CD00D23DA2 /* SelectPartnerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPartnerDelegate.swift; sourceTree = "<group>"; };
+		BA34FBC71D9C83A200D23DA2 /* SelectRestaurantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRestaurantsTableViewController.swift; sourceTree = "<group>"; };
 		BA64E7211D9C2D9700F090A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,10 +116,10 @@
 				9236987D1D9B204200668B47 /* Main.storyboard */,
 				923698791D9B204200668B47 /* AppDelegate.swift */,
 				9236987B1D9B204200668B47 /* SearchMapViewController.swift */,
-				BA34FBC31D9C71F900D23DA2 /* RadiusDelegate.swift */,
+				920698581D9CA9E000B2141A /* SearchRestaurantsViewController.swift */,
+				BA34FBC31D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift */,
 				BA34FBC11D9C719F00D23DA2 /* RadiusViewController.swift */,
-				BA34FBC71D9C83A200D23DA2 /* SelectPartnerViewController.swift */,
-				BA34FBC91D9C83CD00D23DA2 /* SelectPartnerDelegate.swift */,
+				BA34FBC71D9C83A200D23DA2 /* SelectRestaurantsTableViewController.swift */,
 				BA64E7211D9C2D9700F090A8 /* User.swift */,
 				BA34FBC51D9C7DB200D23DA2 /* UserAnnotation.swift */,
 				BA34FBBF1D9C710C00D23DA2 /* CancelButtonDelegate.swift */,
@@ -285,14 +285,14 @@
 			files = (
 				BA64E7221D9C2D9700F090A8 /* User.swift in Sources */,
 				BA34FBC61D9C7DB200D23DA2 /* UserAnnotation.swift in Sources */,
-				BA34FBC81D9C83A200D23DA2 /* SelectPartnerViewController.swift in Sources */,
+				BA34FBC81D9C83A200D23DA2 /* SelectRestaurantsTableViewController.swift in Sources */,
 				9236987C1D9B204200668B47 /* SearchMapViewController.swift in Sources */,
 				923698821D9B204200668B47 /* iOS_Project.xcdatamodeld in Sources */,
 				9236987A1D9B204200668B47 /* AppDelegate.swift in Sources */,
 				BA34FBC21D9C719F00D23DA2 /* RadiusViewController.swift in Sources */,
-				BA34FBCA1D9C83CD00D23DA2 /* SelectPartnerDelegate.swift in Sources */,
-				BA34FBC41D9C71F900D23DA2 /* RadiusDelegate.swift in Sources */,
+				BA34FBC41D9C71F900D23DA2 /* RadiusViewControllerDelegate.swift in Sources */,
 				BA34FBC01D9C710C00D23DA2 /* CancelButtonDelegate.swift in Sources */,
+				920698591D9CA9E000B2141A /* SearchRestaurantsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

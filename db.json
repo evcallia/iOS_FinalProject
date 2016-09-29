@@ -1,0 +1,8 @@
+{
+    "people":[
+        {"id": "0", "name": "Evan", "email": "evan@gmail.com", "phoneNumber": "1111111111", "longitude": "-122.307508","latitude": "47.664504"},
+        {"id": "1", "name": "Joe", "email": "joe@gmail.com", "phoneNumber": "1111111112", "longitude": "-122.204189","latitude": "47.612687"},
+        {"id": "2", "name": "Jeff", "email": "jeff@gmail.com", "phoneNumber": "1111111113", "longitude": "-122.205766","latitude": "47.598708"},
+        {"id": "3", "name": "Tom", "email": "tom@gmail.com", "phoneNumber": "1111111114", "longitude": "-122.177399","latitude": "47.596740"}
+    ]
+}
