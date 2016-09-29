@@ -82,7 +82,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func placePins(users: [User], radius: Double){
         map.removeAnnotations(map.annotations)
         for user in users{
-            let annotation = UserAnnotation(title: user.name, coordinate: CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude), info: user.phoneNumber, user: user, radius: radius)
+            let annotation = UserAnnotation(title: user.name, coordinate: CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude), info: user.phoneNumber, user: user, radius: radius, pinColor: .blue)
             map.addAnnotation(annotation)
         }
     }
@@ -130,6 +130,8 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
                 let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.isEnabled = true
                 view.canShowCallout = true
+                let pin = annotation as! UserAnnotation
+                view.pinTintColor = pin.pinColor
                 
                 let btn = UIButton(type: .detailDisclosure)
                 view.rightCalloutAccessoryView = btn as UIView
@@ -143,12 +145,6 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation = view.annotation as! UserAnnotation
         performSegue(withIdentifier: "SelectPartner", sender: annotation)
-//        let name = annotation.title
-//        let phoneNumber = annotation.info
-//        
-//        let ac = UIAlertController(title: name, message: phoneNumber, preferredStyle: .alert)
-//        ac.addAction(UIAlertAction(title: "OK", style: .default))
-//        present(ac, animated: true)
     }
 //*********
     

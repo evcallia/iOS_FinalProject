@@ -16,6 +16,7 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
 // MARK: - Class variables
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var searchInput: UISearchBar!
+    @IBOutlet weak var selectButton: UIBarButtonItem!
     
     weak var partner: User?
     weak var cancelButtonDelegate: CancelButtonDelegate?
@@ -23,6 +24,7 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
     let locationManager = CLLocationManager()
     var siblingDelegate: SelectRestaurantsTableViewController?
     var previousSearch = ""
+    var selectedRestaurant: MKAnnotationView?
 //********
     
     
@@ -49,6 +51,7 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
     override func viewDidAppear(_ animated: Bool) {
         searchInput.text = previousSearch
         search()
+        selectButton.isEnabled = false
     }
 //*********
     
@@ -61,6 +64,7 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
     func search(){
         siblingDelegate?.previousSearch = searchInput.text!
         map.removeAnnotations(map.annotations)
+        placePartnerOnMap()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchInput.text
         request.region = map.region
@@ -84,14 +88,16 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
 // MARK: - Map Functions
     //Select pin on the map
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
+        selectedRestaurant = view
+        selectButton.isEnabled = true
     }
     
     // Deselect pin on map
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        
+        selectButton.isEnabled = false
     }
     
+    //function creates and drops pins for each location passed
     func placeItemOnMap(item: MKMapItem){
         let location = item.placemark.location
         let myLocation = self.locationManager.location
@@ -103,7 +109,27 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
             map.addAnnotation(annotation)
         }
     }
-
+    
+    // Puts the partner on the map
+    func placePartnerOnMap(){
+        let annotation = PartnerPin(title: (partner?.name)!, pinColor: .blue)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (partner?.latitude)!, longitude: (partner?.longitude)!)
+        annotation.title = partner?.name
+        map.addAnnotation(annotation)
+    }
+    
+    // Sets up custom pins/colors
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let partnerPin = annotation as? PartnerPin{
+            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            pinView.pinTintColor = partnerPin.pinColor
+            pinView.annotation = annotation
+            pinView.isEnabled = true
+            pinView.canShowCallout = true
+            return pinView
+        }
+        return nil
+    }
     
     //function that consistantly maintaines users location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -132,26 +158,6 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
         map.add(circle)
     }
     
-//    // Adds custom tooltip vew for user pins
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        let identifier = "UserAnnotation"
-//        if annotation is UserAnnotation {
-//            if let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-//                view.annotation = annotation
-//                return view
-//            } else {
-//                let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//                view.isEnabled = true
-//                view.canShowCallout = true
-//                
-//                let btn = UIButton(type: .detailDisclosure)
-//                view.rightCalloutAccessoryView = btn as UIView
-//                return view
-//            }
-//        }
-//        return nil
-//    }
-    
 //    // User has selected a person to meet with. Perform segue to next view
 //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
 //        let annotation = view.annotation as! UserAnnotation
@@ -168,7 +174,7 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
     
     @IBAction func selectButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "RequestMeeting", sender: self)
-    
+        
     }
 //**********
     
@@ -176,7 +182,9 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
 // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RequestMeeting"{
-            
+            let controller = segue.destination as! RequestMeetingViewController
+            controller.partner = partner
+            controller.restaurant = selectedRestaurant
         }
     }
 //***********

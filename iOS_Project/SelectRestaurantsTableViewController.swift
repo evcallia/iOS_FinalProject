@@ -60,7 +60,7 @@ class SelectRestaurantsTableViewController: UITableViewController, CLLocationMan
     
     func search(){
         siblingDelegate?.previousSearch = searchInput.text!
-        var places = [MKMapItem]()
+        places = [MKMapItem]()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchInput.text
         let center = locationManager.location?.coordinate
@@ -72,16 +72,16 @@ class SelectRestaurantsTableViewController: UITableViewController, CLLocationMan
             if error != nil{
                 print(error)
             }else if let mapItems = response?.mapItems{
-                print("Map Item Count: ", mapItems.count)
+//                print("Map Item Count: ", mapItems.count)
                 for item in mapItems{
                     let location = item.placemark.location
                     let myLocation = self.locationManager.location
                     let distanceBetween = (myLocation?.distance(from: location!))! / 1609.344
                     if distanceBetween <= self.radius!{
-                        places.append(item)
+                        self.places.append(item)
                     }
                 }
-                print("Places Item Count: ", places.count)
+//                print("Places Item Count: ", places.count)
                 self.tableView.reloadData()
             }
         })
@@ -99,7 +99,28 @@ class SelectRestaurantsTableViewController: UITableViewController, CLLocationMan
         cell.textLabel?.text = places[indexPath.row].name
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let place = places[indexPath.row]
+        let view = MKAnnotationView()
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = place.placemark.coordinate
+        annotation.title = place.name
+        view.annotation = annotation
+        performSegue(withIdentifier: "RequestMeeting", sender: view)
+    }
 //**********
+    
+    
+// MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RequestMeeting"{
+            let controller = segue.destination as! RequestMeetingViewController
+            controller.partner = partner
+            controller.restaurant = sender as? MKAnnotationView
+        }
+    }
+//********
 }
 
 

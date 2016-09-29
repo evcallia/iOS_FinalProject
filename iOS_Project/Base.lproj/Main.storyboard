@@ -42,7 +42,7 @@
                                             <action selector="tenMilesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oh8-pj-qmh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnz-bt-aum">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Jnz-bt-aum">
                                         <state key="normal" title="Set Radius"/>
                                         <connections>
                                             <action selector="setRadiusPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Nr-cA-B1p"/>
@@ -67,7 +67,7 @@
                                                 <state key="normal" title="Sign Out"/>
                                             </button>
                                             <connections>
-                                                <action selector="signOutPressed:" destination="BYZ-38-t0r" id="bAo-ES-h3W"/>
+                                                <action selector="signOutPressed:" destination="BYZ-38-t0r" id="bpj-7d-NRl"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="Vcy-Wr-sYZ">
@@ -77,7 +77,7 @@
                                                 <state key="normal" title="Select User"/>
                                             </button>
                                             <connections>
-                                                <action selector="selectUserPressed:" destination="BYZ-38-t0r" id="uvw-S8-g0v"/>
+                                                <action selector="selectUserPressed:" destination="BYZ-38-t0r" id="C9H-qE-c3v"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -99,20 +99,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Others Near You" id="d0Z-CJ-upd">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="OqW-wm-5Tc">
-                            <connections>
-                                <action selector="signOutPressed:" destination="BYZ-38-t0r" id="e4V-wu-6QC"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Select User" id="agQ-mL-kyW">
-                            <connections>
-                                <action selector="selectUserPressed:" destination="BYZ-38-t0r" id="izC-Oh-Gkh"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="OqW-wm-5Tc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Select User" id="agQ-mL-kyW"/>
                     </navigationItem>
                     <connections>
                         <outlet property="map" destination="2jm-bc-KZJ" id="fuG-ty-crb"/>
-                        <outlet property="selectUserButton" destination="agQ-mL-kyW" id="F7h-eE-324"/>
+                        <outlet property="selectUserButton" destination="Vcy-Wr-sYZ" id="X9G-GY-Hei"/>
                         <outletCollection property="lowerButtons" destination="WxP-5L-UUZ" collectionClass="NSMutableArray" id="wZi-kN-HcK"/>
                         <outletCollection property="lowerButtons" destination="di9-Lg-u6u" collectionClass="NSMutableArray" id="kPK-3b-HBf"/>
                         <outletCollection property="lowerButtons" destination="ArL-hy-G4i" collectionClass="NSMutableArray" id="2QS-rv-2o3"/>
@@ -189,7 +181,7 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ikY-b2-6m3" id="oDT-0k-Glg">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -258,6 +250,7 @@
                     <connections>
                         <outlet property="map" destination="ImQ-JX-d49" id="Dhg-vf-uK3"/>
                         <outlet property="searchInput" destination="dxX-PL-JVO" id="R1m-8y-5OF"/>
+                        <outlet property="selectButton" destination="Lee-tl-MQD" id="GWZ-dV-JoX"/>
                         <segue destination="jHt-Ae-Qjh" kind="show" identifier="RequestMeeting" id="AEF-c8-mY8"/>
                     </connections>
                 </viewController>
@@ -265,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="3768.8000000000002" y="-216.34182908545728"/>
         </scene>
-        <!--Select Partner View Controller-->
+        <!--Request Meeting View Controller-->
         <scene sceneID="hXP-Kf-J8y">
             <objects>
-                <viewController id="jHt-Ae-Qjh" customClass="SelectPartnerViewController" customModule="iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jHt-Ae-Qjh" customClass="RequestMeetingViewController" customModule="iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h8u-7p-aBR"/>
                         <viewControllerLayoutGuide type="bottom" id="UBJ-Kh-XH6"/>
@@ -292,9 +285,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-gT-eZ9">
-                                <state key="normal" title="Request Meeting"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uem-RU-6Gc">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -310,13 +300,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCn-e3-kfM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fo-dK-Hh5">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fo-dK-Hh5">
-                                <frame key="frameInset" minX="166" minY="86" width="42" height="21"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uz7-ZD-p3M">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4r-2b-qaw">
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Call">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="callButtonPressed:" destination="jHt-Ae-Qjh" eventType="touchUpInside" id="g9R-6J-fAm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-gT-eZ9">
+                                        <state key="normal" title="Send Message"/>
+                                        <connections>
+                                            <action selector="sendMessagePressed:" destination="jHt-Ae-Qjh" eventType="touchUpInside" id="7QS-ud-Xeo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCn-e3-kfM">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -326,35 +334,35 @@
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="RgL-07-VTR" secondAttribute="leading" id="3L9-tX-jaT"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qrb-HA-kYz" secondAttribute="leading" id="6OH-sU-KNN"/>
-                            <constraint firstItem="Wol-YH-SQr" firstAttribute="top" secondItem="tjq-bF-cAI" secondAttribute="bottom" constant="51" id="9zA-p3-NeC"/>
-                            <constraint firstItem="lCn-e3-kfM" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="FLh-DT-PII"/>
+                            <constraint firstItem="Uz7-ZD-p3M" firstAttribute="trailing" secondItem="0e7-Hy-gI0" secondAttribute="trailingMargin" id="7ee-W3-yP4"/>
+                            <constraint firstItem="Wol-YH-SQr" firstAttribute="leading" secondItem="qrb-HA-kYz" secondAttribute="trailing" constant="-7.5" id="9es-L6-RvN"/>
                             <constraint firstItem="Uem-RU-6Gc" firstAttribute="top" secondItem="qrb-HA-kYz" secondAttribute="bottom" constant="53" id="FPB-jY-P5M"/>
-                            <constraint firstItem="ecn-gT-eZ9" firstAttribute="leading" secondItem="0e7-Hy-gI0" secondAttribute="leadingMargin" constant="25" id="GLq-yA-GXS"/>
                             <constraint firstItem="RgL-07-VTR" firstAttribute="top" secondItem="Ltu-WQ-ADJ" secondAttribute="bottom" constant="57" id="HX7-Wq-9zm"/>
-                            <constraint firstItem="2fo-dK-Hh5" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="I8v-Gd-M9E"/>
-                            <constraint firstItem="lCn-e3-kfM" firstAttribute="top" secondItem="Wol-YH-SQr" secondAttribute="bottom" constant="52" id="MzL-QI-pDF"/>
+                            <constraint firstItem="2fo-dK-Hh5" firstAttribute="leading" secondItem="Ltu-WQ-ADJ" secondAttribute="trailing" constant="-16.5" id="NXu-s6-HJb"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Uem-RU-6Gc" secondAttribute="leading" id="QRo-7Q-PmD"/>
+                            <constraint firstItem="UBJ-Kh-XH6" firstAttribute="top" secondItem="Uz7-ZD-p3M" secondAttribute="bottom" constant="8" id="TOM-JR-QIZ"/>
                             <constraint firstItem="qrb-HA-kYz" firstAttribute="top" secondItem="RgL-07-VTR" secondAttribute="bottom" constant="52" id="V5a-dd-Mlf"/>
-                            <constraint firstItem="tjq-bF-cAI" firstAttribute="top" secondItem="2fo-dK-Hh5" secondAttribute="bottom" constant="56" id="bzf-zh-z4e"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ecn-gT-eZ9" secondAttribute="trailing" constant="25" id="dBg-MR-jr7"/>
-                            <constraint firstItem="Wol-YH-SQr" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="e9d-9X-eNM"/>
-                            <constraint firstItem="tjq-bF-cAI" firstAttribute="centerX" secondItem="0e7-Hy-gI0" secondAttribute="centerX" id="jhJ-HL-NnZ"/>
+                            <constraint firstItem="lCn-e3-kfM" firstAttribute="top" secondItem="Uem-RU-6Gc" secondAttribute="bottom" constant="8" id="VCV-Fa-xpb"/>
+                            <constraint firstItem="Wol-YH-SQr" firstAttribute="top" secondItem="qrb-HA-kYz" secondAttribute="bottom" constant="7.5" id="WYw-xc-ZKI"/>
+                            <constraint firstItem="tjq-bF-cAI" firstAttribute="top" secondItem="RgL-07-VTR" secondAttribute="bottom" constant="8" id="dfp-tk-gKm"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Ltu-WQ-ADJ" secondAttribute="leading" id="kdM-tF-n5u"/>
-                            <constraint firstItem="UBJ-Kh-XH6" firstAttribute="top" secondItem="ecn-gT-eZ9" secondAttribute="bottom" constant="20" id="lhT-J1-kMh"/>
                             <constraint firstItem="Ltu-WQ-ADJ" firstAttribute="top" secondItem="h8u-7p-aBR" secondAttribute="bottom" constant="23" id="mcS-5Y-bcP"/>
-                            <constraint firstItem="2fo-dK-Hh5" firstAttribute="top" secondItem="h8u-7p-aBR" secondAttribute="bottom" constant="23" id="p0Z-ZB-3sv"/>
+                            <constraint firstItem="2fo-dK-Hh5" firstAttribute="top" secondItem="Ltu-WQ-ADJ" secondAttribute="bottom" constant="7.5" id="sSU-Ev-cGT"/>
+                            <constraint firstItem="lCn-e3-kfM" firstAttribute="leading" secondItem="0e7-Hy-gI0" secondAttribute="leadingMargin" constant="46" id="vTM-5T-dAH"/>
+                            <constraint firstItem="Uz7-ZD-p3M" firstAttribute="leading" secondItem="0e7-Hy-gI0" secondAttribute="leadingMargin" id="yLd-r1-nbb"/>
+                            <constraint firstItem="tjq-bF-cAI" firstAttribute="leading" secondItem="0e7-Hy-gI0" secondAttribute="leadingMargin" constant="38" id="zDe-cb-Qpd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailLabel" destination="e9d-9X-eNM" id="8u1-pi-wDd"/>
-                        <outlet property="nameLabel" destination="2fo-dK-Hh5" id="9XD-yV-VKR"/>
-                        <outlet property="phoneLabel" destination="tjq-bF-cAI" id="eLg-Fh-S3w"/>
-                        <outlet property="restaurantLabel" destination="lCn-e3-kfM" id="96A-6i-kvR"/>
+                        <outlet property="emailLabel" destination="Wol-YH-SQr" id="WSV-el-tNK"/>
+                        <outlet property="nameLabel" destination="2fo-dK-Hh5" id="gkV-Hf-NDf"/>
+                        <outlet property="phoneLabel" destination="tjq-bF-cAI" id="1sl-rK-tBl"/>
+                        <outlet property="restaurantLabel" destination="lCn-e3-kfM" id="Xr1-JA-x46"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSN-fr-GR8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4745" y="123"/>
+            <point key="canvasLocation" x="4744.8000000000002" y="122.78860569715144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fDs-Ht-DUs">

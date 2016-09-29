@@ -16,13 +16,15 @@ class UserAnnotation: NSObject, MKAnnotation {
     var info: String
     var user: User
     var radius: Double
+    var pinColor: UIColor
     
-    init(title: String, coordinate: CLLocationCoordinate2D, info: String, user: User, radius: Double) {
+    init(title: String, coordinate: CLLocationCoordinate2D, info: String, user: User, radius: Double, pinColor: UIColor) {
         self.title = title
         self.coordinate = coordinate
         self.info = info
         self.user = user
         self.radius = radius
+        self.pinColor = pinColor
     }
     
 }
