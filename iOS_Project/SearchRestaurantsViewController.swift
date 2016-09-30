@@ -112,10 +112,12 @@ class SearchRestaurantsViewController: UIViewController, MKMapViewDelegate, CLLo
     
     // Puts the partner on the map
     func placePartnerOnMap(){
-        let annotation = PartnerPin(title: (partner?.name)!, pinColor: .blue)
-        annotation.coordinate = CLLocationCoordinate2D(latitude: (partner?.latitude)!, longitude: (partner?.longitude)!)
-        annotation.title = partner?.name
-        map.addAnnotation(annotation)
+        if let partner = partner{
+            let annotation = PartnerPin(title: partner.name, pinColor: .blue)
+            annotation.coordinate = CLLocationCoordinate2D(latitude: partner.latitude, longitude: partner.longitude)
+            annotation.title = partner.name
+            map.addAnnotation(annotation)
+        }
     }
     
     // Sets up custom pins/colors

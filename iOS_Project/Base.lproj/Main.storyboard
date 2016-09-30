@@ -52,6 +52,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPW-7Y-VPR">
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="ogS-ra-hYP" eventType="touchUpInside" id="4fV-DQ-GWT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bI-ID-bzM">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -82,6 +85,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="5bm-gk-2aO" id="Qcx-yO-cDw"/>
+                        <outlet property="passwordTextField" destination="ltU-rs-0Wl" id="BEb-tZ-j9y"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="Login" id="hCF-ij-tgL"/>
                     </connections>
                 </viewController>
@@ -275,7 +280,6 @@
                                             </button>
                                             <connections>
                                                 <action selector="signOutPressed:" destination="BYZ-38-t0r" id="bpj-7d-NRl"/>
-                                                <segue destination="ogS-ra-hYP" kind="show" identifier="SignOut" id="pNP-04-r2J"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="Vcy-Wr-sYZ">
@@ -318,6 +322,7 @@
                         <outletCollection property="lowerButtons" destination="ArL-hy-G4i" collectionClass="NSMutableArray" id="2QS-rv-2o3"/>
                         <outletCollection property="lowerButtons" destination="Jnz-bt-aum" collectionClass="NSMutableArray" id="7Ya-Bs-sOL"/>
                         <segue destination="1Xg-dQ-aEj" kind="show" identifier="SelectPartner" id="WUM-ds-fAo"/>
+                        <segue destination="ogS-ra-hYP" kind="show" identifier="SignOut" id="r3k-Y7-aVx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

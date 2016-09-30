@@ -18,10 +18,12 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     @IBOutlet var lowerButtons: [UIButton]!
     @IBOutlet weak var selectUserButton: UIBarButtonItem!
     
+    var distance: Double = 3.0
     var users = [User]()
     var currentUser: User?
     var usersWithin = [User]()
     let locationManager = CLLocationManager()
+    var myTimer = Timer()
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 //**********
     
@@ -39,27 +41,42 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         self.locationManager.startUpdatingLocation()
         self.map.showsUserLocation = true
         self.map.delegate = self
-       
+    
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // update location timer
+        myTimer = Timer(timeInterval: 30.0, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
+        RunLoop.current.add(myTimer, forMode: RunLoopMode.commonModes)
         //get other user location
         getAllUsers()
     }
+    
 //**********
     
+    func updateLocation()  {
+        let latitude = locationManager.location?.coordinate.latitude
+        let longitude = locationManager.location?.coordinate.longitude
+        currentUser?.latitude = latitude!
+        currentUser?.longitude = longitude!
+        User.updateUser(user: currentUser!)
+        getAllUsers()
+    }
     
 // Mark: - Custom functions
     //grabs all users from database
     func getAllUsers(){
-        User.getAllUsers(completionHandler: {
+        User.getAllUsers(currentUser: currentUser!, completionHandler: {
             users in
             self.users = users
             DispatchQueue.main.async (execute: {
-                self.getUsersInRadius(distance: 3.0)
+                self.getUsersInRadius()
             })
         })
     }
     
     // filters users within search radius
-    func getUsersInRadius(distance: Double){
+    func getUsersInRadius(){
         usersWithin = [User]()
         for user in users{
             let location = CLLocation(latitude: user.latitude, longitude: user.longitude)
@@ -146,6 +163,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     // User has selected a person to meet with. Perform segue to next view
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation = view.annotation as! UserAnnotation
+        myTimer.invalidate()
         performSegue(withIdentifier: "SelectPartner", sender: annotation)
     }
 //*********
@@ -153,42 +171,49 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
 // Mark: - Pressed button functions
     @IBAction func signOutPressed(_ sender: UIBarButtonItem) {
-
+        myTimer.invalidate()
+        performSegue(withIdentifier: "SignOut", sender: self)
     }
     
     @IBAction func selectUserPressed(_ sender: UIBarButtonItem) {
+        myTimer.invalidate()
         performSegue(withIdentifier: "SelectPartner", sender: self)
     }
     
     @IBAction func threeMilesPressed(_ sender: UIButton) {
         resetButtonColor()
+        distance = 3.0
         sender.backgroundColor = UIColor.blue
         sender.titleLabel?.textColor = UIColor.white
         sender.tintColor = UIColor.white
-        self.getUsersInRadius(distance: 3.0)
+        self.getUsersInRadius()
     }
     
     @IBAction func fiveMilesPressed(_ sender: UIButton) {
         resetButtonColor()
+        distance = 5.0
         sender.backgroundColor = UIColor.blue
         sender.titleLabel?.textColor = UIColor.white
         sender.tintColor = UIColor.white
-        self.getUsersInRadius(distance: 5.0)
+        self.getUsersInRadius()
     }
     
     @IBAction func tenMilesPressed(_ sender: UIButton) {
         resetButtonColor()
+        distance = 10.0
         sender.backgroundColor = UIColor.blue
         sender.titleLabel?.textColor = UIColor.white
         sender.tintColor = UIColor.white
-        self.getUsersInRadius(distance: 10.0)
+        self.getUsersInRadius()
     }
     
     @IBAction func setRadiusPressed(_ sender: UIButton) {
         resetButtonColor()
+        
         sender.backgroundColor = UIColor.blue
         sender.titleLabel?.textColor = UIColor.white
         sender.tintColor = UIColor.white
+        myTimer.invalidate()
         performSegue(withIdentifier: "SetRadius", sender: self)
     }
     
@@ -214,13 +239,13 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
             let controller = navController.topViewController as! SearchRestaurantsViewController
             controller.cancelButtonDelegate = self
             controller.partner = (sender as? UserAnnotation)?.user
-            controller.radius = (sender as? UserAnnotation)?.radius
+            controller.radius = distance
             
             let navController2 = tabController?.viewControllers?[1] as! UINavigationController
             let controller2 = navController2.topViewController as! SelectRestaurantsTableViewController
                 controller2.cancelButtonDelegate = self
             controller2.partner = (sender as? UserAnnotation)?.user
-            controller2.radius = (sender as? UserAnnotation)?.radius
+            controller2.radius = distance
             
             controller.siblingDelegate = controller2
             controller2.siblingDelegate = controller
@@ -231,7 +256,8 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
 // MARK: - RadiusControllerDelegate functions
     func radius(controller: RadiusViewController, didSet radius: Double) {
         dismiss(animated: true, completion: nil)
-        self.getUsersInRadius(distance: radius)
+        distance = radius
+        self.getUsersInRadius()
     }
 //*********
     

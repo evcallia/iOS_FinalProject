@@ -11,6 +11,8 @@ import UIKit
 class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     
     var user: User?
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +23,22 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
 // MARK: - RegisterViewControllerDelegate functions
     func registerViewController(_ controller: RegisterViewController, didCreate user: User){
         dismiss(animated: true, completion: {
-            self.performSegue(withIdentifier: "Login", sender: user)
+            DispatchQueue.main.async{
+                self.performSegue(withIdentifier: "Login", sender: user)
+            }
         })
     }
 //**********
     
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        User.login(email:emailTextField.text!, password: passwordTextField.text!, completionHandler: {
+            user in
+            self.user = user
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "Login", sender: self)
+            }
+        })
+    }
     
 // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
