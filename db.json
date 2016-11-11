@@ -73,12 +73,20 @@
       "id": 8
     },
     {
-      "name": "Brandon",
-      "email": "mcHadi@gmail.com",
+      "name": "Eugene Mu",
+      "email": "codingdojo@alumni.com",
       "phoneNumber": 1234,
-      "latitude": 47.609819,
-      "longitude": -122.196547,
-      "id": 9
+      "latitude": 47.60995,
+      "longitude": -122.270021,
+      "id": 10
+    },
+    {
+      "name": "Joe",
+      "email": "joe@.com",
+      "phoneNumber": 23423,
+      "longitude": -122.307508,
+      "latitude": 47.664504,
+      "id": 11
     }
   ]
 }

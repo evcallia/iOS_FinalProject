@@ -40,6 +40,10 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
         })
     }
     
+//    func cancelButtonPressedFrom(_ controller: UIViewController) {
+//        dismiss(animated: true, completion: nil)
+//    }
+    
 // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Register"{

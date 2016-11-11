@@ -206,7 +206,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Y0w-Tm-I2N" secondAttribute="trailing" id="yyn-QU-gEo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wlu-7i-xwi"/>
+                    <navigationItem key="navigationItem" id="Wlu-7i-xwi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1Js-5J-AnH"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="qog-PT-uho" id="0KN-NK-qlj"/>
                         <outlet property="nameTextField" destination="KIA-P8-lga" id="k5Y-e6-pPG"/>
@@ -394,7 +396,7 @@
                                 <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ikY-b2-6m3" id="oDT-0k-Glg">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
